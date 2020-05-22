@@ -10,15 +10,15 @@ var jwt = require('jsonwebtoken');
 * Create User Endpoint
 ****************************************/
 
-router.post('/createuser', function(req, res) {
+router.post('/create', function(req, res) {
 
     var firstName = req.body.user.firstName;
     var lastName = req.body.user.lastName;
     var email = req.body.user.email;
-    var userTypeID = req.body.user.userTypeID;
-    var salesUserID = req.body.user.salesUserID;  // either the user themselves, or if an administrative assistant this is the salesperson they work for.
+    var userTypeId = req.body.user.userTypeId;
+    var salesUserId = req.body.user.salesUserId;  // either the user themselves, or if an administrative assistant this is the salesperson they work for.
     var mobileNum = req.body.user.mobileNum;
-    var fbMsgrID = req.body.user.fbMsgrID;
+    var fbMsgrId = req.body.user.fbMsgrId;
     var password = req.body.user.password;
 
     User
@@ -26,10 +26,10 @@ router.post('/createuser', function(req, res) {
           firstName : firstName,
           lastName : lastName,
           email : email,
-          userTypeID : userTypeID,
-          salesUserID : salesUserID,
+          userTypeId : userTypeId,
+          salesUserId : salesUserId,
           mobileNum : mobileNum,
-          fbMsgrID : fbMsgrID,
+          fbMsgrId : fbMsgrId,
           passwordHash : bcrypt.hashSync(password, 10)
       })
       .then(
@@ -49,7 +49,7 @@ router.post('/createuser', function(req, res) {
  * User Signin
 ****************************************/
 
-router.post('/signin', function(req, res) {
+router.post('/', function(req, res) {
     User
     .findOne({
         where: {email: req.body.user.email}

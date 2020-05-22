@@ -16,7 +16,7 @@ var jwt = require('jsonwebtoken');
 router.get('/', validateSession, (req, res) => {
 
     User.findAll({
-        where: {salesUserID: req.user.salesUserID}
+        where: {salesUserId: req.user.salesUserId}
     })
       .then(users => res.status(200).json(users))
       .catch(err => res.status(500).json({error:err}))
@@ -26,7 +26,7 @@ router.get('/', validateSession, (req, res) => {
 
 
 /****************************************
-* GET A User by ID
+* GET A User by Id
 ****************************************/
 
 router.get('/:id', validateSession, (req, res) => {
@@ -54,10 +54,10 @@ router.post('/', validateSession, (req, res) => {
         "firstName" : req.body.user.firstName,
         "lastName" : req.body.user.lastName,
         "email" : req.body.user.email,
-        "userTypeID" : req.body.user.userTypeID,
-        "salesUserID" : req.body.user.salesUserID,
+        "userTypeId" : req.body.user.userTypeId,
+        "salesUserId" : req.body.user.salesUserId,
         "mobileNum" : req.body.user.mobileNum,
-        "fbMsgrID" : req.body.user.fbMsgrID,
+        "fbMsgrId" : req.body.user.fbMsgrId,
         "password" : req.body.user.password,
     }
 
@@ -80,10 +80,10 @@ router.put('/:id', validateSession, (req, res) => {
         "firstName" : req.body.user.firstName,
         "lastName" : req.body.user.lastName,
         "email" : req.body.user.email,
-        "userTypeID" : req.body.user.userTypeID,
-        "salesUserID" : req.body.user.salesUserID,
+        "userTypeId" : req.body.user.userTypeId,
+        "salesUserId" : req.body.user.salesUserId,
         "mobileNum" : req.body.user.mobileNum,
-        "fbMsgrID" : req.body.user.fbMsgrID,
+        "fbMsgrId" : req.body.user.fbMsgrId,
         "password" : req.body.user.password,
     }
 

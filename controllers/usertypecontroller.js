@@ -16,7 +16,6 @@ var jwt = require('jsonwebtoken');
 router.get('/', validateSession, (req, res) => {
 
     UserType.findAll({
-   //     where: {salesUserID: req.user.salesUserID} // This should not be needed.  Admin will be CRUDing.
     })
       .then(userTypes => res.status(200).json(userTypes))
       .catch(err => res.status(500).json({error:err}))
@@ -26,7 +25,7 @@ router.get('/', validateSession, (req, res) => {
 
 
 /****************************************
-* GET A UserType by ID
+* GET A UserType by Id
 ****************************************/
 
 router.get('/:id', validateSession, (req, res) => {

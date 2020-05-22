@@ -16,7 +16,7 @@ var jwt = require('jsonwebtoken');
 router.get('/', validateSession, (req, res) => {
 
     Message.findAll({
-        where: {salesUserID: req.user.salesUserID}
+        where: {salesUserId: req.user.salesUserId}
     })
       .then(messages => res.status(200).json(messages))
       .catch(err => res.status(500).json({error:err}))
@@ -26,7 +26,7 @@ router.get('/', validateSession, (req, res) => {
 
 
 /****************************************
-* GET A Message by ID
+* GET A Message by Id
 ****************************************/
 
 router.get('/:id', validateSession, (req, res) => {
@@ -51,11 +51,11 @@ router.get('/:id', validateSession, (req, res) => {
 router.post('/', validateSession, (req, res) => {
 
     const message = {
-        "contactID" : req.body.message.contactID,
-        "salesUserID" : req.body.message.salesUserID,
+        "contactId" : req.body.message.contactId,
+        "userId": req.body.message.userId,
+        "salesUserId" : req.body.message.salesUserId,
         "message" : req.body.message.message,
         "sent" : req.body.message.sent,
-        "dateTime" : req.body.message.dateTime,
         "service" : req.body.message.service,
     }
 
@@ -75,11 +75,11 @@ router.post('/', validateSession, (req, res) => {
 router.put('/:id', validateSession, (req, res) => {
 
     const message = {
-        "contactID" : req.body.message.contactID,
-        "salesUserID" : req.body.message.salesUserID,
+        "contactId" : req.body.message.contactId,
+        "userId": req.body.message.userId,
+        "salesUserId" : req.body.message.salesUserId,
         "message" : req.body.message.message,
         "sent" : req.body.message.sent,
-        "dateTime" : req.body.message.dateTime,
         "service" : req.body.message.service,
     }
 
