@@ -52,7 +52,7 @@ router.post('/', validateSession, (req, res) => {
     const userType = {
         "userType" : req.body.usertype.userType,
         "description" : req.body.usertype.description,
-        "active" : req.body.usertype.active,
+        "active" : req.body.usertype.active
     }
 
     UserType.create(userType)

@@ -58,7 +58,7 @@ router.post('/', validateSession, (req, res) => {
         "salesUserId" : req.body.user.salesUserId,
         "mobileNum" : req.body.user.mobileNum,
         "fbMsgrId" : req.body.user.fbMsgrId,
-        "password" : req.body.user.password,
+        "passwordHash" : bcrypt.hashSync(req.body.user.password, 10)
     }
 
     User.create(user)
