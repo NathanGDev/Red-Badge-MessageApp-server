@@ -1,19 +1,14 @@
 {
   "name": "messageappserver",
   "version": "1.0.0",
-  "description": "server for red badge messaging app",
+  "description": "server for message app",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon"
+    "start": "node ./node_modules/http-server/bin/http-server"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/NathanGDev/Red-Badge-MessageApp-server.git"
-  },
-  "author": "Team Alpha",
-  "license": "Team Alpha",
+  "author": "chelsea",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^5.0.1",
@@ -22,12 +17,5 @@
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.37.0"
-  },
-  "bugs": {
-    "url": "https://github.com/NathanGDev/Red-Badge-MessageApp-server/issues"
-  },
-  "homepage": "https://github.com/NathanGDev/Red-Badge-MessageApp-server#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.4"
   }
 }
