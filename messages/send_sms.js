@@ -1,10 +1,12 @@
 // Send a n SMS using Twiliop with Node.JS
-const accountSid = "AC128b5612aefb50528785b1d3fa7a543e";
-const authToken = "0d21461677e8c471a20f0b63a77ed749";
+require("dotenv").config({ path: "../.env" });
+// Send an SMS using Twilio with NODE.JS
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
 
 client.messages.create({
   body: "This is a test Text message from kaelon",
-  from: "+12053902793", // Twillio Number
+  from: process.env.TWILIO_SMS_NUM, // Twillio Number
   to: "+13176266555",
 });

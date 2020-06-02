@@ -1,8 +1,11 @@
-require("dotenv").config(); // Includes the .env file for reference in this file
+require("dotenv").config({ path: "../.env" }); // Includes the .env file for reference in this file
 var router = require("express").Router();
 var sequelize = require("../Db");
 var Message = sequelize.import("../models/message");
 const validateSession = require("../middleware/validate-session");
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require("twilio")(accountSid, authToken);
 
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
@@ -36,8 +39,16 @@ router.get("/:id", validateSession, (req, res) => {
 /****************************************
  * CREATE Message
  ****************************************/
+// validateSession,
+router.post("/", (req, res) => {
+  // Send an SMS using Twilio with NODE.JS
+  console.log(req + "==================================================");
+  // client.messages.create({
+  //   body: req.body.message.message,
+  //   from: process.env.TWILIO_SMS_NUM, // Twillio Number
+  //   to: contactId,
+  // });
 
-router.post("/", validateSession, (req, res) => {
   const message = {
     contactId: req.body.message.contactId,
     userId: req.body.message.userId,

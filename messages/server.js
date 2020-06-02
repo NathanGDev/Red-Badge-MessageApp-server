@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 const http = require("http");
 const express = require("express");
 const MessagingResponse = require("twilio").twiml.MessagingResponse;
@@ -15,7 +15,9 @@ app.post("/sms", (req, res) => {
 });
 
 http.createServer(
-  app.listen(1336, () => {
-    console.log(`Message server is listening on port 1337.`);
+  app.listen(process.env.TWILIO_SERVER_PORT, () => {
+    console.log(
+      `Message server is listening on port ${[process.env.TWILIO_SERVER_PORT]}.`
+    );
   })
 );
