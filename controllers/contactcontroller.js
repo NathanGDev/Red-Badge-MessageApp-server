@@ -16,7 +16,7 @@ var jwt = require('jsonwebtoken');
 router.get('/', validateSession, (req, res) => {
 
     Contact.findAll({
-        where: {salesUserID: req.user.salesUserID}
+        where: {userId: req.user.salesUserId}
     })
       .then(contacts => res.status(200).json(contacts))
       .catch(err => res.status(500).json({error:err}))
@@ -26,7 +26,7 @@ router.get('/', validateSession, (req, res) => {
 
 
 /****************************************
-* GET A Contact by ID
+* GET A Contact by Id
 ****************************************/
 
 router.get('/:id', validateSession, (req, res) => {
@@ -54,8 +54,8 @@ router.post('/', validateSession, (req, res) => {
         "firstName": req.body.contact.firstName,
         "lastName": req.body.contact.lastName,
         "mobileNum" : req.body.contact.mobileNum,
-        "fbMsgrID" : req.body.contact.fbMsgrID,
-        "salesUserID" : req.body.contact.salesUserID,
+        "fbMsgrId" : req.body.contact.fbMsgrId,
+        "userId" : req.body.contact.salesUserId,
     }
 
     Contact.create(contact)
@@ -77,8 +77,8 @@ router.put('/:id', validateSession, (req, res) => {
         "firstName": req.body.contact.firstName,
         "lastName": req.body.contact.lastName,
         "mobileNum" : req.body.contact.mobileNum,
-        "fbMsgrID" : req.body.contact.fbMsgrID,
-        "salesUserID" : req.body.contact.salesUserID,
+        "fbMsgrId" : req.body.contact.fbMsgrId,
+        "userId" : req.body.contact.salesUserId,
     }
 
     Contact.update(contact, {where: {id: req.params.id}})

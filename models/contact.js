@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        fbMsgrID: {
+        fbMsgrId: {
             type: DataTypes.STRING,
         },
     })

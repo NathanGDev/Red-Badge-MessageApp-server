@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         mobileNum: {
             type: DataTypes.STRING,
         },
-        fbMsgrID: {
+        fbMsgrId: {
             type: DataTypes.STRING,
         },
-        salesUserID: {
+        salesUserId: {
             type: DataTypes.INTEGER,
         },
     })
