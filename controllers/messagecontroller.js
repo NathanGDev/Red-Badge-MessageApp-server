@@ -37,6 +37,14 @@ router.get("/:id", validateSession, (req, res) => {
  * CREATE Message
  ****************************************/
 
+  // Send an SMS using Twilio with NODE.JS
+  console.log(req + "==================================================");
+  client.messages.create({
+    body: req.body.message.message,
+    from: process.env.TWILIO_SMS_NUM, // Twillio Number
+    to: contactId,
+  });
+
 router.post("/", validateSession, (req, res) => {
   const message = {
     contactId: req.body.message.contactId,
