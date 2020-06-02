@@ -6,6 +6,7 @@ var message = require('./controllers/messagecontroller');
 var user = require('./controllers/usercontroller');
 var contact = require('./controllers/contactcontroller');
 var userType = require('./controllers/usertypecontroller');
+var sms = require('./controllers/inboundsmscontroller');
 var sequelize = require('./db');
 
 sequelize.sync();      // tip: pass in {force: true} for resetting tables
@@ -17,6 +18,7 @@ app.use(require('./middleware/headers'));
  * EXPOSED ROUTES
  ********************/
 app.use('/signin', signin);
+app.use('/sms', sms);
 
 /*******************************
  * PROTECTED ROUTES (Validated)
