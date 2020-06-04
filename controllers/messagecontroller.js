@@ -3,6 +3,9 @@ var router = require("express").Router();
 var sequelize = require("../Db");
 var Message = sequelize.import("../models/message");
 const validateSession = require("../middleware/validate-session");
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require("twilio")(accountSid, authToken);
 
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
@@ -37,15 +40,16 @@ router.get("/:id", validateSession, (req, res) => {
  * CREATE Message
  ****************************************/
 
+router.post("/", validateSession, (req, res) => {
+
   // Send an SMS using Twilio with NODE.JS
-  console.log(req + "==================================================");
+
   client.messages.create({
     body: req.body.message.message,
-    from: process.env.TWILIO_SMS_NUM, // Twillio Number
-    to: contactId,
+    from: process.env.TWILIO_SMS_NUM, // Twilio Number
+    to: req.body.message.contactMobileNum,
   });
 
-router.post("/", validateSession, (req, res) => {
   const message = {
     contactId: req.body.message.contactId,
     userId: req.body.message.userId,

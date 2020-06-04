@@ -52,7 +52,11 @@ router.post('/create', function(req, res) {
 router.post('/', function(req, res) {
     User
     .findOne({
-        where: {email: req.body.user.email}
+        where: {email: req.body.user.email},
+        include: [{
+            model: userType,
+            where: {}
+        }]
     })
     .then(
         function(user) {
@@ -62,6 +66,7 @@ router.post('/', function(req, res) {
                         var token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: 60*60*24});
                         res.json({
                             user: user,
+                            userType: userType,
                             message: "successfully authenticated",
                             sessionToken: token
                         })

@@ -23,7 +23,7 @@ app.use('/sms', sms);
 /*******************************
  * PROTECTED ROUTES (Validated)
  *******************************/
-app.use(require('./middleware/validate-session'));
+// app.use(require('./middleware/validate-session'));
 app.use('/message', message);
 app.use('/user', user);
 app.use('/contact', contact);
