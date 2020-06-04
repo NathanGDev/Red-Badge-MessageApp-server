@@ -13,7 +13,7 @@
     "url": "git+https://github.com/NathanGDev/Red-Badge-MessageApp-server.git"
   },
   "author": "Team Alpha",
-  "license": "Team Alpha",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^5.0.1",

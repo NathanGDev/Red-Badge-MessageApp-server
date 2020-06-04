@@ -17,11 +17,14 @@ app.use(require('./middleware/headers'));
  * EXPOSED ROUTES
  ********************/
 app.use('/signin', signin);
+// app.use('/contact', contact);
+// app.use('/user', user);
+// app.use('/usertype', userType);
 
 /*******************************
  * PROTECTED ROUTES (Validated)
  *******************************/
-app.use(require('./middleware/validate-session'));
+// app.use(require('./middleware/validate-session'));
 app.use('/message', message);
 app.use('/user', user);
 app.use('/contact', contact);
