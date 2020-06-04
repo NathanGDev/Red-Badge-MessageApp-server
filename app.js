@@ -20,7 +20,6 @@ app.use(require("./middleware/headers"));
  * EXPOSED ROUTES
  ********************/
 app.use("/signin", signin);
-console.log(req)
 /*******************************
  * PROTECTED ROUTES (Validated)
  *******************************/
