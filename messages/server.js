@@ -25,5 +25,8 @@ app.post("/sms", (req, res) => {
 http.createServer(
   app.listen(process.env.TWILIO_SERVER_PORT, () => {
     console.log(`Message server is listening on port ${process.env.TWILIO_SERVER_PORT}.`);
+    // console.log(
+    //   `Message server is listening on port ${[process.env.TWILIO_SERVER_PORT]}.`
+    // );
   })
 );

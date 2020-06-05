@@ -1,6 +1,6 @@
-require('dotenv').config({ path: '../.env'});
+// Send a n SMS using Twiliop with Node.JS
+require("dotenv").config({ path: "../.env" });
 
-// Send an SMS using Twilio with Node.JS
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
