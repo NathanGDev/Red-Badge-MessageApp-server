@@ -21,7 +21,8 @@
     "jsonwebtoken": "^8.2.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.37.0"
+    "sequelize": "^4.37.0",
+    "twilio": "^3.45.0"
   },
   "bugs": {
     "url": "https://github.com/NathanGDev/Red-Badge-MessageApp-server/issues"
