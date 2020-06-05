@@ -47,12 +47,19 @@ router.get("/:id", validateSession, (req, res) => {
  * CREATE Message
  ****************************************/
 router.post("/", validateSession, (req, res) => {
+
   // Send an SMS using Twilio with NODE.JS
+
+  console.log('**********1 ' + req.body.message.contactMobileNum);
+  console.log('**********2 ' + req.body.message.message);
+  console.log('**********3 ' + req.body.message.contactMobileNum);
+
   client.messages.create({
     body: req.body.message.message,
     from: process.env.TWILIO_SMS_NUM, // Twilio Number
     to: req.body.message.contactMobileNum,
   });
+
   const message = {
     contactId: req.body.message.contactId,
     userId: req.user.id,
@@ -61,12 +68,14 @@ router.post("/", validateSession, (req, res) => {
     sent: req.body.message.sent,
     service: req.body.message.service,
   };
+
   Message.create(message)
     .then((message) => {
       res.status(200).json(message);
     })
     .catch((err) => res.json(req.errors));
 });
+
 /****************************************
  * UPDATE Message
  ****************************************/

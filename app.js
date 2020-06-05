@@ -5,6 +5,7 @@ var signin = require("./controllers/signincontroller");
 var smsSender = require("./messages/send_sms");
 var http = require("http");
 var message = require("./controllers/messagecontroller");
+var sms = require("./controllers/inboundsmscontroller");
 var user = require("./controllers/usercontroller");
 var contact = require("./controllers/contactcontroller");
 var userType = require("./controllers/usertypecontroller");
@@ -20,6 +21,8 @@ app.use(require("./middleware/headers"));
  * EXPOSED ROUTES
  ********************/
 app.use("/signin", signin);
+app.use("/sms", sms);
+
 /*******************************
  * PROTECTED ROUTES (Validated)
  *******************************/
