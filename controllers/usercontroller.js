@@ -13,6 +13,8 @@ var jwt = require("jsonwebtoken");
  ***************************************************/
 
 router.get("/", validateSession, (req, res) => {
+  console.log("*******inside get users******");
+  console.log(JSON.stringify(req.user));
   User.findAll({
     where: { salesUserId: req.user.salesUserId },
     include: [
@@ -45,6 +47,7 @@ router.get("/:id", validateSession, (req, res) => {
  ****************************************/
 
 router.post("/", validateSession, (req, res) => {
+  // console.log("******" + JSON.stringify(req));
   const user = {
     firstName: req.body.user.firstName,
     lastName: req.body.user.lastName,
