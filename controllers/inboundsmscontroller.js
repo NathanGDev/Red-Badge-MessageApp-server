@@ -15,12 +15,16 @@ router.use(urlencoded({ extended: false }));
 
 router.post("/", async (req, res) => {
     var toPhoneNum = req.body.To.slice(2,12);
-    var fromPhoneNum = req.body.From.slice(2,12);
+    // var fromPhoneNum = req.body.From.slice(2,12);
+
+    console.log('!!!!!!! toPhoneNum = ' + toPhoneNum);
+    console.log('req.body.From = ' + req.body.From);
 
     // Get the Contact ID given the inbound FROM phone #
     const contactRecord = await Contact.findAll({
       where: {
-          mobileNum: fromPhoneNum
+          // mobileNum: fromPhoneNum
+          mobileNum: req.body.From
       }
     })
 

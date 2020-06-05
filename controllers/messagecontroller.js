@@ -50,6 +50,10 @@ router.post("/", validateSession, (req, res) => {
 
   // Send an SMS using Twilio with NODE.JS
 
+  console.log('**********1 ' + req.body.message.contactMobileNum);
+  console.log('**********2 ' + req.body.message.message);
+  console.log('**********3 ' + req.body.message.contactMobileNum);
+
   client.messages.create({
     body: req.body.message.message,
     from: process.env.TWILIO_SMS_NUM, // Twilio Number
