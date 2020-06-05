@@ -2,6 +2,7 @@ require("dotenv").config(); // Includes the .env file for reference in this file
 var router = require("express").Router();
 var sequelize = require("../Db");
 var User = sequelize.import("../models/user");
+var UserType = sequelize.import("../models/userType");
 const validateSession = require("../middleware/validate-session");
 
 var bcrypt = require("bcryptjs");
@@ -12,8 +13,16 @@ var jwt = require("jsonwebtoken");
  ***************************************************/
 
 router.get("/", validateSession, (req, res) => {
+  console.log("*******inside get users******");
+  console.log(JSON.stringify(req.user));
   User.findAll({
     where: { salesUserId: req.user.salesUserId },
+    include: [
+      {
+        model: UserType,
+        where: {},
+      },
+    ],
   })
     .then((users) => res.status(200).json(users))
     .catch((err) => res.status(500).json({ error: err }));
@@ -38,6 +47,7 @@ router.get("/:id", validateSession, (req, res) => {
  ****************************************/
 
 router.post("/", validateSession, (req, res) => {
+  // console.log("******" + JSON.stringify(req));
   const user = {
     firstName: req.body.user.firstName,
     lastName: req.body.user.lastName,

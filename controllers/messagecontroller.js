@@ -9,15 +9,27 @@ const client = require("twilio")(accountSid, authToken);
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 /**************************************************
- * GET All Messages for the Signed In User/Salesperson
+ * GET All Messages for the a contact id
  ***************************************************/
-router.get("/", validateSession, (req, res) => {
+router.get("/contact/:id", validateSession, (req, res) => {
   Message.findAll({
-    where: { salesUserId: req.user.salesUserId },
+    where: {
+      contactId: req.params.id,
+    },
   })
-    .then((messages) => res.status(200).json(messages))
+    .then((message) => res.status(200).json(message))
     .catch((err) => res.status(500).json({ error: err }));
 });
+/**************************************************
+ * GET All Messages for the Signed In User/Salesperson
+ ***************************************************/
+// router.get("/", validateSession, (req, res) => {
+//   Message.findAll({
+//     where: { salesUserId: req.user.salesUserId },
+//   })
+//     .then((messages) => res.status(200).json(messages))
+//     .catch((err) => res.status(500).json({ error: err }));
+// });
 /****************************************
  * GET A Message by Id
  ****************************************/
@@ -30,6 +42,7 @@ router.get("/:id", validateSession, (req, res) => {
     .then((message) => res.status(200).json(message))
     .catch((err) => res.status(500).json({ error: err }));
 });
+
 /****************************************
  * CREATE Message
  ****************************************/
@@ -42,8 +55,8 @@ router.post("/", validateSession, (req, res) => {
   });
   const message = {
     contactId: req.body.message.contactId,
-    userId: req.body.message.userId,
-    salesUserId: req.body.message.salesUserId,
+    userId: req.user.id,
+    salesUserId: req.user.salesUserId,
     message: req.body.message.message,
     sent: req.body.message.sent,
     service: req.body.message.service,
