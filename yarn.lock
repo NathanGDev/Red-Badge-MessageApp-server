@@ -34,13 +34,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/dotenv@^8.2.0":
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/@types/dotenv/-/dotenv-8.2.0.tgz#5cd64710c3c98e82d9d15844375a33bf1b45d053"
-  integrity sha512-ylSC9GhfRH7m1EUXBXofhgx4lUWmFeQDINW5oLuS+gxWdfUeW4zJdeVTYVkexEW+e2VUvlZR2kGnGGipAWR7kw==
-  dependencies:
-    dotenv "*"
-
 "@types/express-serve-static-core@*":
   version "4.17.7"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.7.tgz#dfe61f870eb549dc6d7e12050901847c7d7e915b"
@@ -181,7 +174,7 @@ bluebird@^3.4.6, bluebird@^3.5.0:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
-body-parser@1.19.0:
+body-parser@1.19.0, body-parser@^1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
   integrity sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
@@ -423,11 +416,6 @@ dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv@*:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
-  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
-
 dotenv@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
@@ -590,9 +578,9 @@ get-stream@^5.1.0:
     pump "^3.0.0"
 
 glob-parent@~5.1.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.1.tgz#b6c1ef417c4e5663ea498f1c45afac6916bbc229"
-  integrity sha512-FnI+VGOpnlGHWZxthPGR+QhR78fuiK0sNLkHQv+bL9fQi57lNNdquIbna/WrfROrolq8GK5Ek6BiMwqL/voRYQ==
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
+  integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
   dependencies:
     is-glob "^4.0.1"
 
